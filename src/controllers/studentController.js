@@ -15,6 +15,11 @@ export const studentLogin = async(req,res) => {
                 message:'your not a student',
             })
         }
+        if(checkName.blocked){
+            return res.status(400).json({
+                message:'your blocked by admin',
+            }) 
+        }
         let checkDob = checkName.dob
         if(checkDob !== dob){
             return res.status(400).json({
